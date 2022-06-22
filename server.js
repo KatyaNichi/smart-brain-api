@@ -14,12 +14,10 @@ const {handleApiCall} = require('./controllers/image');
 const db = knex({
     client: 'pg',
     connection: {
-      host: 'postgresql-globular-18251',
-      user: 'postgres',
-      password: '9713',
-      database: 'smart-brain'
-    },
-  });
+      host: process.env.DATABASE_URL,
+      ssl: true,
+  }
+});
 
 app.use(express.json());
 app.use(cors());
